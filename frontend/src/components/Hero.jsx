@@ -75,7 +75,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 animate-slide-up animation-delay-400">
             <button
               onClick={scrollToMenu}
-              className="group w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm font-semibold uppercase tracking-wider"
+              className="group w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-full"
             >
               {t('hero.viewMenu')}
             </button>
@@ -83,14 +83,14 @@ const Hero = () => {
               href={businessInfo.googleMapsLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group w-full sm:w-auto flex items-center justify-center space-x-2 px-8 py-4 bg-transparent border border-white/30 text-white hover:border-amber-400 hover:text-amber-400 transition-all duration-300 text-sm font-medium uppercase tracking-wider"
+              className="group w-full sm:w-auto flex items-center justify-center space-x-2 px-8 py-4 bg-transparent border border-white/30 text-white hover:border-amber-400 hover:text-amber-400 transition-all duration-300 text-sm font-medium uppercase tracking-wider rounded-full"
             >
               <MapPin className="w-4 h-4" />
               <span>{t('hero.getDirections')}</span>
             </a>
             <a
               href={businessInfo.phoneLink}
-              className="group w-full sm:w-auto flex items-center justify-center space-x-2 px-8 py-4 bg-amber-400 text-black hover:bg-amber-300 transition-all duration-300 text-sm font-semibold uppercase tracking-wider"
+              className="group w-full sm:w-auto flex items-center justify-center space-x-2 px-8 py-4 bg-amber-400 text-black hover:bg-amber-300 transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-full"
             >
               <Phone className="w-4 h-4" />
               <span>{t('hero.callNow')}</span>
