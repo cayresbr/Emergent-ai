@@ -1,9 +1,13 @@
 import React from 'react';
 import { Heart, Coffee, Car, Sun } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const About = () => {
   const { t } = useLanguage();
+  const [headerRef, headerVisible] = useScrollAnimation(0.2);
+  const [textRef, textVisible] = useScrollAnimation(0.1);
+  const [featuresRef, featuresVisible] = useScrollAnimation(0.1);
 
   const features = [
     {
@@ -35,7 +39,12 @@ const About = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 transition-all duration-700 ${
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-amber-400 text-sm uppercase tracking-[0.3em] mb-4">
             {t('about.subtitle')}
           </h2>
@@ -48,7 +57,12 @@ const About = () => {
         {/* Content */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
-          <div className="space-y-6">
+          <div 
+            ref={textRef}
+            className={`space-y-6 transition-all duration-700 delay-100 ${
+              textVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}
+          >
             <p className="text-white/80 text-lg leading-relaxed">
               {t('about.description1')}
             </p>
@@ -58,11 +72,19 @@ const About = () => {
           </div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-2 gap-6">
+          <div 
+            ref={featuresRef}
+            className="grid grid-cols-2 gap-6"
+          >
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="group p-6 bg-black/50 border border-amber-400/10 hover:border-amber-400/30 transition-all duration-500"
+                className={`group p-6 bg-black/50 border border-amber-400/10 hover:border-amber-400/30 transition-all duration-500 ${
+                  featuresVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: featuresVisible ? `${index * 100 + 200}ms` : '0ms' }}
               >
                 <feature.icon className="w-8 h-8 text-amber-400 mb-4 group-hover:scale-110 transition-transform duration-300" />
                 <h4 className="text-white font-medium mb-2">{feature.title}</h4>
