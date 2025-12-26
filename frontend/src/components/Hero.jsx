@@ -72,7 +72,7 @@ const Hero = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slide-up animation-delay-400">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 animate-slide-up animation-delay-400">
             <button
               onClick={scrollToMenu}
               className="group w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm font-semibold uppercase tracking-wider"
@@ -94,6 +94,22 @@ const Hero = () => {
             >
               <Phone className="w-4 h-4" />
               <span>{t('hero.callNow')}</span>
+            </a>
+          </div>
+
+          {/* DoorDash Order Button */}
+          <div className="mb-12 animate-slide-up animation-delay-500">
+            <a
+              href={businessInfo.doordashLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block hover:scale-105 transition-transform duration-300"
+            >
+              <img
+                src={businessInfo.doordashLogo}
+                alt="Order on DoorDash"
+                className="h-12 sm:h-14 w-auto"
+              />
             </a>
           </div>
 
