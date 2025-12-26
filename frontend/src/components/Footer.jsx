@@ -2,9 +2,11 @@ import React from 'react';
 import { Heart, Coffee, ArrowUp } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { businessInfo } from '../data/mock';
+import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const Footer = () => {
   const { t } = useLanguage();
+  const [footerRef, footerVisible] = useScrollAnimation(0.1);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -19,14 +21,19 @@ const Footer = () => {
 
   return (
     <footer className="bg-neutral-950 border-t border-amber-400/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div 
+        ref={footerRef}
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 transition-all duration-700 ${
+          footerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="grid md:grid-cols-4 gap-12">
           {/* Logo & Description */}
           <div className="md:col-span-2">
             <img
               src={businessInfo.logoUrl}
               alt="Oh La La Cafeteria"
-              className="h-20 w-auto mb-6"
+              className="h-20 w-20 object-cover rounded-full mb-6"
             />
             <p className="text-white/50 text-sm leading-relaxed max-w-md">
               {t('about.description1')}
@@ -60,8 +67,11 @@ const Footer = () => {
               >
                 {businessInfo.phone}
               </a>
-              <p className="text-white/50">{businessInfo.hours.weekdays}</p>
-              <p className="text-white/50">{businessInfo.hours.sunday}</p>
+              <div className="pt-2 space-y-1">
+                <p className="text-white/50">{businessInfo.hours.monday}</p>
+                <p className="text-white/50">{businessInfo.hours.saturday}</p>
+                <p className="text-amber-400/70">{businessInfo.hours.sunday}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -82,7 +92,7 @@ const Footer = () => {
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 p-3 bg-amber-400 text-black hover:bg-amber-300 transition-all duration-300 shadow-lg z-50"
+        className="fixed bottom-6 right-6 p-3 bg-amber-400 text-black hover:bg-amber-300 transition-all duration-300 shadow-lg z-50 rounded-full"
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-5 h-5" />
