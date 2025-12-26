@@ -49,7 +49,8 @@ const Hero = () => {
             <img
               src={businessInfo.logoUrl}
               alt="Oh La La Cafeteria"
-              className="h-40 sm:h-52 w-auto animate-fade-in"
+              className="h-40 sm:h-52 w-auto animate-fade-in rounded-full"
+              style={{ background: 'transparent' }}
             />
           </div>
 
