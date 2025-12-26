@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { reviews } from '../data/mock';
+import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const Reviews = () => {
   const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [headerRef, headerVisible] = useScrollAnimation(0.2);
+  const [featuredRef, featuredVisible] = useScrollAnimation(0.1);
+  const [gridRef, gridVisible] = useScrollAnimation(0.1);
 
   const nextReview = () => {
     setCurrentIndex((prev) => (prev + 1) % reviews.length);
@@ -33,7 +37,12 @@ const Reviews = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 transition-all duration-700 ${
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-amber-400 text-sm uppercase tracking-[0.3em] mb-4">
             {t('reviews.subtitle')}
           </h2>
@@ -44,7 +53,12 @@ const Reviews = () => {
         </div>
 
         {/* Featured Review */}
-        <div className="max-w-4xl mx-auto mb-12">
+        <div 
+          ref={featuredRef}
+          className={`max-w-4xl mx-auto mb-12 transition-all duration-700 delay-100 ${
+            featuredVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          }`}
+        >
           <div className="relative bg-black/50 border border-amber-400/20 p-8 sm:p-12">
             {/* Quote Icon */}
             <Quote className="absolute top-6 left-6 w-12 h-12 text-amber-400/10" />
@@ -103,13 +117,21 @@ const Reviews = () => {
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div 
+          ref={gridRef}
+          className="grid md:grid-cols-3 gap-6"
+        >
           {reviews.slice(0, 3).map((review, index) => (
             <div
               key={review.id}
               className={`p-6 border border-amber-400/10 hover:border-amber-400/30 transition-all duration-500 ${
                 index === 0 ? 'bg-black/50' : 'bg-neutral-900/50'
+              } ${
+                gridVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-10'
               }`}
+              style={{ transitionDelay: gridVisible ? `${index * 100 + 300}ms` : '0ms' }}
             >
               <div className="flex mb-4">{renderStars(review.rating)}</div>
               <p className="text-white/70 text-sm leading-relaxed mb-4 line-clamp-3">
@@ -126,7 +148,11 @@ const Reviews = () => {
         </div>
 
         {/* Google Maps Link */}
-        <div className="text-center mt-12">
+        <div 
+          className={`text-center mt-12 transition-all duration-700 delay-500 ${
+            gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <a
             href="https://maps.app.goo.gl/fd9z2VjrwNtBzSbJA?g_st=ic"
             target="_blank"
