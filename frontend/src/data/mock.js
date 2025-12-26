@@ -273,7 +273,7 @@ export const reviews = [
 
 export const businessInfo = {
   name: 'Oh La La Cafeteria',
-  address: '9191 S Monroe St, Sandy, UT 84070',
+  address: '120 E 9000 S, Sandy, UT 84070',
   phone: '(801) 555-CAFE',
   phoneLink: 'tel:+18015552233',
   googleMapsLink: 'https://maps.app.goo.gl/fd9z2VjrwNtBzSbJA?g_st=ic',
