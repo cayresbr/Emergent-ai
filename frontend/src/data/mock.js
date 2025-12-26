@@ -277,7 +277,7 @@ export const businessInfo = {
   phone: '(801) 555-2233',
   phoneLink: 'tel:+18015552233',
   googleMapsLink: 'https://maps.app.goo.gl/fd9z2VjrwNtBzSbJA?g_st=ic',
-  facebookLink: 'https://www.facebook.com/ohlalacoffeeshop',
+  facebookLink: 'https://www.facebook.com/share/1apvnsAfSg/?mibextid=wwXIfr',
   hours: {
     monday: 'Mon: 7 AM - 4 PM',
     tuesday: 'Tue: 7 AM - 4 PM',
