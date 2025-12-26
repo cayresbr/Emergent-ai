@@ -104,7 +104,7 @@ const Hero = () => {
               <img
                 src={businessInfo.doordashLogo}
                 alt="Order on DoorDash"
-                className="h-7 w-auto"
+                className="h-10 w-auto"
               />
             </a>
           </div>
