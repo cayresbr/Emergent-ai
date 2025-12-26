@@ -46,12 +46,17 @@ const Hero = () => {
         <div className="text-center">
           {/* Logo */}
           <div className="mb-8 flex justify-center">
-            <img
-              src={businessInfo.logoUrl}
-              alt="Oh La La Cafeteria"
-              className="h-40 sm:h-52 w-auto animate-fade-in rounded-full"
-              style={{ background: 'transparent' }}
-            />
+            <div className="relative h-40 sm:h-52 w-40 sm:w-52 animate-fade-in">
+              <img
+                src={businessInfo.logoUrl}
+                alt="Oh La La Cafeteria"
+                className="h-full w-full object-cover"
+                style={{ 
+                  clipPath: 'circle(50% at 50% 50%)',
+                  WebkitClipPath: 'circle(50% at 50% 50%)'
+                }}
+              />
+            </div>
           </div>
 
           {/* Slogan */}
