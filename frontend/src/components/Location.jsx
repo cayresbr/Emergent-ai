@@ -2,9 +2,16 @@ import React from 'react';
 import { MapPin, Phone, Clock, Facebook, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { businessInfo } from '../data/mock';
+import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const Location = () => {
   const { t } = useLanguage();
+  const [headerRef, headerVisible] = useScrollAnimation(0.2);
+  const [mapRef, mapVisible] = useScrollAnimation(0.1);
+  const [addressRef, addressVisible] = useScrollAnimation(0.1);
+  const [phoneRef, phoneVisible] = useScrollAnimation(0.1);
+  const [hoursRef, hoursVisible] = useScrollAnimation(0.1);
+  const [socialRef, socialVisible] = useScrollAnimation(0.1);
 
   return (
     <section id="location" className="py-24 bg-black relative overflow-hidden">
@@ -13,7 +20,12 @@ const Location = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 transition-all duration-700 ${
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-amber-400 text-sm uppercase tracking-[0.3em] mb-4">
             {t('location.subtitle')}
           </h2>
@@ -25,7 +37,12 @@ const Location = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Map Embed */}
-          <div className="relative">
+          <div 
+            ref={mapRef}
+            className={`relative transition-all duration-700 delay-100 ${
+              mapVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}
+          >
             <div className="aspect-square sm:aspect-video lg:aspect-square bg-neutral-900 border border-amber-400/20 overflow-hidden">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.5!2d-111.8626!3d40.5660!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDMzJzU3LjYiTiAxMTHCsDUxJzQ1LjQiVw!5e0!3m2!1sen!2sus!4v1629900000000!5m2!1sen!2sus"
@@ -51,9 +68,14 @@ const Location = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             {/* Address */}
-            <div className="flex items-start space-x-4 p-6 bg-neutral-950/50 border border-amber-400/10 hover:border-amber-400/30 transition-all duration-300">
+            <div 
+              ref={addressRef}
+              className={`flex items-start space-x-4 p-6 bg-neutral-950/50 border border-amber-400/10 hover:border-amber-400/30 transition-all duration-500 ${
+                addressVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+              }`}
+            >
               <MapPin className="w-6 h-6 text-amber-400 flex-shrink-0 mt-1" />
               <div>
                 <h4 className="text-white font-medium mb-2">Address</h4>
@@ -71,7 +93,12 @@ const Location = () => {
             </div>
 
             {/* Phone */}
-            <div className="flex items-start space-x-4 p-6 bg-neutral-950/50 border border-amber-400/10 hover:border-amber-400/30 transition-all duration-300">
+            <div 
+              ref={phoneRef}
+              className={`flex items-start space-x-4 p-6 bg-neutral-950/50 border border-amber-400/10 hover:border-amber-400/30 transition-all duration-500 delay-100 ${
+                phoneVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+              }`}
+            >
               <Phone className="w-6 h-6 text-amber-400 flex-shrink-0 mt-1" />
               <div>
                 <h4 className="text-white font-medium mb-2">Phone</h4>
@@ -85,17 +112,34 @@ const Location = () => {
             </div>
 
             {/* Hours */}
-            <div className="flex items-start space-x-4 p-6 bg-neutral-950/50 border border-amber-400/10 hover:border-amber-400/30 transition-all duration-300">
+            <div 
+              ref={hoursRef}
+              className={`flex items-start space-x-4 p-6 bg-neutral-950/50 border border-amber-400/10 hover:border-amber-400/30 transition-all duration-500 delay-200 ${
+                hoursVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+              }`}
+            >
               <Clock className="w-6 h-6 text-amber-400 flex-shrink-0 mt-1" />
               <div>
-                <h4 className="text-white font-medium mb-2">{t('location.hours')}</h4>
-                <p className="text-white/60">{businessInfo.hours.weekdays}</p>
-                <p className="text-white/60">{businessInfo.hours.sunday}</p>
+                <h4 className="text-white font-medium mb-3">{t('location.hours')}</h4>
+                <div className="space-y-1 text-sm">
+                  <p className="text-white/60">{businessInfo.hours.monday}</p>
+                  <p className="text-white/60">{businessInfo.hours.tuesday}</p>
+                  <p className="text-white/60">{businessInfo.hours.wednesday}</p>
+                  <p className="text-white/60">{businessInfo.hours.thursday}</p>
+                  <p className="text-white/60">{businessInfo.hours.friday}</p>
+                  <p className="text-white/60">{businessInfo.hours.saturday}</p>
+                  <p className="text-amber-400/80 font-medium">{businessInfo.hours.sunday}</p>
+                </div>
               </div>
             </div>
 
             {/* Social */}
-            <div className="flex items-start space-x-4 p-6 bg-neutral-950/50 border border-amber-400/10 hover:border-amber-400/30 transition-all duration-300">
+            <div 
+              ref={socialRef}
+              className={`flex items-start space-x-4 p-6 bg-neutral-950/50 border border-amber-400/10 hover:border-amber-400/30 transition-all duration-500 delay-300 ${
+                socialVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+              }`}
+            >
               <Facebook className="w-6 h-6 text-amber-400 flex-shrink-0 mt-1" />
               <div>
                 <h4 className="text-white font-medium mb-2">{t('location.followUs')}</h4>
