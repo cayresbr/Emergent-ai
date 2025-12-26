@@ -274,13 +274,18 @@ export const reviews = [
 export const businessInfo = {
   name: 'Oh La La Cafeteria',
   address: '120 E 9000 S, Sandy, UT 84070',
-  phone: '(801) 555-CAFE',
+  phone: '(801) 555-2233',
   phoneLink: 'tel:+18015552233',
   googleMapsLink: 'https://maps.app.goo.gl/fd9z2VjrwNtBzSbJA?g_st=ic',
-  facebookLink: 'https://facebook.com/ohlalacafe',
+  facebookLink: 'https://www.facebook.com/ohlalacoffeeshop',
   hours: {
-    weekdays: 'Mon - Sat: 6:00 AM - 8:00 PM',
-    sunday: 'Sunday: 7:00 AM - 6:00 PM'
+    monday: 'Mon: 7 AM - 4 PM',
+    tuesday: 'Tue: 7 AM - 4 PM',
+    wednesday: 'Wed: 7 AM - 4 PM',
+    thursday: 'Thu: 7 AM - 4 PM',
+    friday: 'Fri: 7 AM - 4 PM',
+    saturday: 'Sat: 8 AM - 2 PM',
+    sunday: 'Sun: Closed'
   },
   rating: 4.9,
   reviewCount: 150,
