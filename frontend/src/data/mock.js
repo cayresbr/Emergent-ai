@@ -284,5 +284,7 @@ export const businessInfo = {
   },
   rating: 4.9,
   reviewCount: 150,
-  logoUrl: 'https://customer-assets.emergentagent.com/job_08321485-b4a0-4118-bf85-a60754ec1d21/artifacts/06wnnxz4_IMG_7694.jpeg'
+  logoUrl: 'https://customer-assets.emergentagent.com/job_08321485-b4a0-4118-bf85-a60754ec1d21/artifacts/06wnnxz4_IMG_7694.jpeg',
+  doordashLink: 'https://www.doordash.com/store/34495939?utm_source=mx_share',
+  doordashLogo: 'https://customer-assets.emergentagent.com/job_cafe-ohlala/artifacts/41uarc1l_IMG_7744.webp'
 };
