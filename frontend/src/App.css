@@ -10,11 +10,6 @@
   position: relative;
 }
 
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
 /* Hide scrollbar during mobile menu transition */
 body.menu-open {
   overflow: hidden;
@@ -104,9 +99,5 @@ button:active {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-  
-  html {
-    scroll-behavior: auto;
   }
 }
