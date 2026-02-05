@@ -29,7 +29,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-black"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
