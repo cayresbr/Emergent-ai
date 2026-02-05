@@ -1,10 +1,5 @@
 /* App.css - Oh La La Cafeteria */
 
-/* Prevent horizontal overflow */
-.App {
-  overflow-x: hidden;
-}
-
 /* Hero section styles */
 #hero {
   position: relative;
